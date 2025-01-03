@@ -13,9 +13,7 @@ export type Props = {
 export default function SearchField({
   inputValue,
   setInputValue,
-  todo,
   setTodo,
-  todos,
   setTodos,
 }: Props) {
   return (
@@ -24,10 +22,9 @@ export default function SearchField({
         <InputField inputValue={inputValue} setInputValue={setInputValue} />
         <AddToList
           inputValue={inputValue}
-          todo={todo}
-          todos={todos}
           setTodos={setTodos}
           setTodo={setTodo}
+          setInputValue={setInputValue}
         />
       </form>
     </>
@@ -63,22 +60,18 @@ function InputField({
 
 function AddToList({
   inputValue,
-  todos,
   setTodos,
-  todo,
-  setTodo,
+  setInputValue,
 }: {
   inputValue: string;
-  todo: TodoType;
   setTodo: React.Dispatch<React.SetStateAction<TodoType>>;
-  todos: TodoType[];
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
 }) {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setTodo({ name: inputValue, isDone: false });
-    setTodos((prev) => [...prev, todo]);
-    console.log(todos);
+    setTodos((prev) => [...prev, { name: inputValue, isDone: false }]);
+    setInputValue("");
   }
 
   return (
