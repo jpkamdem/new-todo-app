@@ -51,7 +51,7 @@ function InputField({
           name="inputValue"
           value={inputValue}
           onChange={(e) => handleChange(e)}
-          className="h-12 rounded-md text-3xl my-4 pl-2 border-2 focus:outline-none focus:ring-0 focus:border-background-color"
+          className="h-12 rounded-md text-2xl my-4 pl-2 border-2 focus:outline-none focus:ring-0 focus:border-background-color"
         />
       </div>
     </>

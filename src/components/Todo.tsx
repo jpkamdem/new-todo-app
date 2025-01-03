@@ -45,10 +45,10 @@ function TodoItem({
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
   todos: TodoType[];
 }) {
-  function handleChangeDone(index: number) {
+  function handleChangeDone(item: TodoType) {
     setTodos((prev) =>
       prev.map((todo, i) =>
-        i === index ? { ...todo, isDone: !todo.isDone } : todo
+        todo.name === item.name ? { ...todo, isDone: !todo.isDone } : todo
       )
     );
   }
@@ -62,7 +62,7 @@ function TodoItem({
       <li key={index}>
         <div className="flex relative left-4 justify-between items-center h-16 border-b-2 border-slate-100">
           <span
-            onClick={() => handleChangeDone(index)}
+            onClick={() => handleChangeDone(todoItem)}
             className={`first-letter:capitalize ${
               todoItem.isDone ? "line-through" : ""
             }`}
