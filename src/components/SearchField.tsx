@@ -38,7 +38,10 @@ function AddToList() {
   const { input, setInput, setTodosList, todosList } = useDataContext();
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setTodosList((prev) => [...prev, { name: input, isDone: false }]);
+    setTodosList((prev) => [
+      ...prev,
+      { name: input.toLocaleLowerCase().trim(), isDone: false },
+    ]);
     setInput("");
   }
 
