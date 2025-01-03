@@ -35,17 +35,24 @@ function InputField() {
 }
 
 function AddToList() {
-  const { input, setInput, setTodosList } = useDataContext();
+  const { input, setInput, setTodosList, todosList } = useDataContext();
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setTodosList((prev) => [...prev, { name: input, isDone: false }]);
     setInput("");
   }
 
+  function checking() {
+    const check =
+      input.toLocaleLowerCase().trim() === "" ||
+      todosList.some((todo) => todo.name === input.toLocaleLowerCase().trim());
+    return check;
+  }
+
   return (
     <button
       type="submit"
-      disabled={input.toLocaleLowerCase().trim() === ""}
+      disabled={checking()}
       onClick={handleSubmit}
       className="font-bold text-xl text-white bg-primary-brown rounded-md w-full p-4"
     >
