@@ -4,14 +4,14 @@ import Todo from "./Todo";
 
 export default function Dashboard() {
   return (
-    <main className="bg-white w-5/6 h-[80dvh] rounded-xl">
-      <div className="flex flex-col">
+    <main className="bg-white w-5/6 h-[80dvh] rounded-t-lg">
+      <div className="flex flex-col h-full">
         <Header />
-        <section className="flex">
-          <div className="bg-red-500 flex-1">
+        <section className="grid grid-cols-main h-full min-w-full">
+          <div className="border-r-2 border-r-slate-100 p-2">
             <Todo />
           </div>
-          <div className="bg-blue-500 flex-1">
+          <div className="bg-search-field-color p-2">
             <SearchField />
           </div>
         </section>
