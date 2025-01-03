@@ -9,16 +9,19 @@ export type TodoProps = {
 export type TodoListProps = {
   todos: TodoType[];
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
+  sortedTodos: TodoType[];
 };
 
-export default function Todo({ todos, setTodos }: TodoListProps) {
-  return <TodoList todos={todos} setTodos={setTodos} />;
+export default function Todo({ todos, setTodos, sortedTodos }: TodoListProps) {
+  return (
+    <TodoList todos={todos} setTodos={setTodos} sortedTodos={sortedTodos} />
+  );
 }
 
-function TodoList({ todos, setTodos }: TodoListProps) {
+function TodoList({ todos, setTodos, sortedTodos }: TodoListProps) {
   return (
     <ul>
-      {todos.map((todoItem, index) => (
+      {sortedTodos.map((todoItem, index) => (
         <TodoItem
           todoItem={todoItem}
           index={index}
@@ -60,7 +63,7 @@ function TodoItem({
         <div className="flex relative left-4 justify-between items-center h-16 border-b-2 border-slate-100">
           <span
             onClick={() => handleChangeDone(index)}
-            className={`first-letter:capitalize ${
+            className={`first-letter:caapi ${
               todoItem.isDone ? "line-through" : ""
             }`}
           >
