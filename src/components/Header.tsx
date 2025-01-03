@@ -1,22 +1,17 @@
-import { TodoType } from "./Dashboard";
+import { useDataContext } from "./DataContext";
 
-export default function Header({
-  sortedTodos,
-  completedTodos,
-}: {
-  sortedTodos: TodoType[];
-  completedTodos: TodoType[];
-}) {
+export default function Header() {
+  const { sortedTodosList, completedTodosList } = useDataContext();
   function headerText() {
-    if (sortedTodos.length <= 0) {
-      return `${sortedTodos.length} Aucune tâche à accomplir`;
+    if (sortedTodosList.length <= 0) {
+      return `${sortedTodosList.length} Aucune tâche à accomplir`;
     }
 
-    if (sortedTodos.length == completedTodos.length) {
-      return `${sortedTodos.length} Toutes les tâches ont été réalisées`;
+    if (sortedTodosList.length == completedTodosList.length) {
+      return `${sortedTodosList.length} Toutes les tâches ont été réalisées`;
     }
 
-    return `${sortedTodos.length}`;
+    return `${sortedTodosList.length}`;
   }
 
   return (
@@ -27,7 +22,7 @@ export default function Header({
         <div className="rounded-3xl bg-btn-color w-8 h-8"></div>
       </section>
       <span className="text-xl">
-        <span className="font-bold">{completedTodos.length}</span> /{" "}
+        <span className="font-bold">{completedTodosList.length}</span> /{" "}
         {headerText()}
       </span>
     </header>

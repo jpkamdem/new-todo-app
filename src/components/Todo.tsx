@@ -1,52 +1,25 @@
 import { TodoType } from "./Dashboard";
+import { useDataContext } from "./DataContext";
 
-export type TodoProps = {
-  todos: TodoType[];
-  setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
-  setTodo: React.Dispatch<React.SetStateAction<TodoType>>;
-};
-
-export type TodoListProps = {
-  todos: TodoType[];
-  setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
-  sortedTodos: TodoType[];
-};
-
-export default function Todo({ todos, setTodos, sortedTodos }: TodoListProps) {
-  return (
-    <TodoList todos={todos} setTodos={setTodos} sortedTodos={sortedTodos} />
-  );
+export default function Todo() {
+  return <TodoList />;
 }
 
-function TodoList({ todos, setTodos, sortedTodos }: TodoListProps) {
+function TodoList() {
+  const { sortedTodosList } = useDataContext();
   return (
     <ul>
-      {sortedTodos.map((todoItem, index) => (
-        <TodoItem
-          todoItem={todoItem}
-          index={index}
-          key={index}
-          setTodos={setTodos}
-          todos={todos}
-        />
+      {sortedTodosList.map((todoItem, index) => (
+        <TodoItem todoItem={todoItem} index={index} key={index} />
       ))}
     </ul>
   );
 }
 
-function TodoItem({
-  todoItem,
-  index,
-  setTodos,
-  todos,
-}: {
-  todoItem: TodoType;
-  index: number;
-  setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
-  todos: TodoType[];
-}) {
+function TodoItem({ todoItem, index }: { todoItem: TodoType; index: number }) {
+  const { todosList, setTodosList } = useDataContext();
   function handleChangeDone(item: TodoType) {
-    setTodos((prev) =>
+    setTodosList((prev) =>
       prev.map((todo) =>
         todo.name === item.name ? { ...todo, isDone: !todo.isDone } : todo
       )
@@ -54,7 +27,7 @@ function TodoItem({
   }
 
   function removeItem(item: TodoType) {
-    setTodos(todos.filter((todo) => todo.name !== item.name));
+    setTodosList(todosList.filter((todo) => todo.name !== item.name));
   }
 
   return (
