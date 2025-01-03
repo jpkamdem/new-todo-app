@@ -10,7 +10,8 @@ export default {
         'background-color': "#f1d4b3",
         'header-color': '#fbf5ed',
         'btn-color': '#aba599',
-        'search-field-color': '#fefdf8'
+        'search-field-color': '#fefdf8',
+        'primary-brown': '#463a2a'
       }
     },
     gridTemplateColumns: {
