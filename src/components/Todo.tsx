@@ -1,28 +1,31 @@
-export default function Todo() {
-  return <TodoList />;
+import { TodoType } from "./Dashboard";
+
+export type TodoProps = {
+  todos: TodoType[];
+  setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
+};
+
+export default function Todo({ todos, setTodos }: TodoProps) {
+  return <TodoList todos={todos} setTodos={setTodos} />;
 }
 
-function TodoList() {
+function TodoList({ todos, setTodos }: TodoProps) {
   return (
     <ul>
-      <TodoItem />
+      {todos.map((todo, index) => (
+        <TodoItem todo={todo} index={index} key={index} />
+      ))}
     </ul>
   );
 }
 
-function TodoItem() {
+function TodoItem({ todo, index }: { todo: TodoType; index: number }) {
   // ❌
   return (
     <>
-      <li>
+      <li key={index}>
         <div className="flex relative left-4 justify-between items-center h-16 border-b-2 border-slate-100">
-          <span>cook dinner</span>
-          <button className="relative right-8">❌</button>
-        </div>
-      </li>
-      <li>
-        <div className="flex relative left-4 justify-between items-center h-12 border-b-2 border-slate-100">
-          <span>study for exam</span>
+          <span>{todo.name}</span>
           <button className="relative right-8">❌</button>
         </div>
       </li>
