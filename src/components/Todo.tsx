@@ -6,11 +6,16 @@ export type TodoProps = {
   setTodo: React.Dispatch<React.SetStateAction<TodoType>>;
 };
 
-export default function Todo({ todos, setTodos, setTodo }: TodoProps) {
-  return <TodoList todos={todos} setTodos={setTodos} setTodo={setTodo} />;
+export type TodoListProps = {
+  todos: TodoType[];
+  setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
+};
+
+export default function Todo({ todos, setTodos }: TodoListProps) {
+  return <TodoList todos={todos} setTodos={setTodos} />;
 }
 
-function TodoList({ todos, setTodos, setTodo }: TodoProps) {
+function TodoList({ todos, setTodos }: TodoListProps) {
   return (
     <ul>
       {todos.map((todoItem, index) => (
@@ -19,6 +24,7 @@ function TodoList({ todos, setTodos, setTodo }: TodoProps) {
           index={index}
           key={index}
           setTodos={setTodos}
+          todos={todos}
         />
       ))}
     </ul>
@@ -29,10 +35,12 @@ function TodoItem({
   todoItem,
   index,
   setTodos,
+  todos,
 }: {
   todoItem: TodoType;
   index: number;
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
+  todos: TodoType[];
 }) {
   function handleChangeDone(index: number) {
     setTodos((prev) =>
@@ -40,6 +48,10 @@ function TodoItem({
         i === index ? { ...todo, isDone: !todo.isDone } : todo
       )
     );
+  }
+
+  function removeItem(item: TodoType) {
+    setTodos(todos.filter((todo) => todo.name !== item.name));
   }
 
   return (
@@ -52,7 +64,12 @@ function TodoItem({
           >
             {todoItem.name}
           </span>
-          <button className="relative right-8">❌</button>
+          <button
+            onClick={() => removeItem(todoItem)}
+            className="relative right-8"
+          >
+            ❌
+          </button>
         </div>
       </li>
     </>
