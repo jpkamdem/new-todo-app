@@ -21,8 +21,8 @@ export default function Dashboard() {
       <div className="flex flex-col h-full">
         <Header />
         <section className="grid grid-cols-main h-full min-w-full">
-          <div className="border-r-2 border-r-slate-100 overflow-y-scroll">
-            <Todo todos={todos} setTodos={setTodos} />
+          <div className="border-r-2 border-r-slate-100 overflow-y-scroll overflow-x-hidden">
+            <Todo todos={todos} setTodos={setTodos} setTodo={setTodo} />
           </div>
           <div className="bg-search-field-color p-8">
             <SearchField
