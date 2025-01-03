@@ -2,11 +2,6 @@ import Header from "./Header";
 import SearchField from "./SearchField";
 import Todo from "./Todo";
 
-export type TodoType = {
-  name: string;
-  isDone: boolean;
-};
-
 export default function Dashboard() {
   return (
     <main className="bg-white w-5/6 h-[80dvh] rounded-t-md">

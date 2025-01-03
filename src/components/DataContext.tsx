@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
-type TodoType = {
+export type TodoType = {
   name: string;
   isDone: boolean;
 };

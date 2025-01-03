@@ -1,4 +1,4 @@
-import { TodoType } from "./Dashboard";
+import { TodoType } from "./DataContext";
 import { useDataContext } from "./DataContext";
 
 export default function Todo() {
