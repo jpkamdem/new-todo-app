@@ -60,7 +60,7 @@ function TodoItem({
         <div className="flex relative left-4 justify-between items-center h-16 border-b-2 border-slate-100">
           <span
             onClick={() => handleChangeDone(index)}
-            className={`capitalize ${todoItem.isDone ? "line-through" : ""}`}
+            className={`normal-case ${todoItem.isDone ? "line-through" : ""}`}
           >
             {todoItem.name}
           </span>
