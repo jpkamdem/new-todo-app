@@ -47,7 +47,7 @@ function TodoItem({
 }) {
   function handleChangeDone(item: TodoType) {
     setTodos((prev) =>
-      prev.map((todo, i) =>
+      prev.map((todo) =>
         todo.name === item.name ? { ...todo, isDone: !todo.isDone } : todo
       )
     );
