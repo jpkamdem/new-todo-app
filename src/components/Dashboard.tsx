@@ -8,7 +8,7 @@ export default function Dashboard() {
       <div className="flex flex-col h-full">
         <Header />
         <section className="grid grid-cols-main h-full min-w-full">
-          <div className="border-r-2 border-r-slate-100 p-2">
+          <div className="border-r-2 border-r-slate-100">
             <Todo />
           </div>
           <div className="bg-search-field-color p-8">
