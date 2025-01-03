@@ -11,7 +11,9 @@ export default function Header() {
       return `${sortedTodosList.length} Toutes les tâches ont été réalisées`;
     }
 
-    return `${sortedTodosList.length}`;
+    return `${sortedTodosList.length} tâche${
+      sortedTodosList.length >= 2 ? "s" : ""
+    } à accomplir`;
   }
 
   return (
