@@ -63,7 +63,7 @@ function TodoItem({
         <div className="flex relative left-4 justify-between items-center h-16 border-b-2 border-slate-100">
           <span
             onClick={() => handleChangeDone(index)}
-            className={`first-letter:caapi ${
+            className={`first-letter:capitalize ${
               todoItem.isDone ? "line-through" : ""
             }`}
           >
