@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Header from "./Header";
 import SearchField from "./SearchField";
 import Todo from "./Todo";
@@ -29,12 +29,6 @@ export default function Dashboard() {
       }),
     [todos]
   );
-
-  useEffect(() => {
-    console.log("todos ", todos);
-    console.log("completedTodos : ", completedTodos);
-    console.log("sortedTodos : ", sortedTodos);
-  }, [todos]);
 
   return (
     <main className="bg-white w-5/6 h-[80dvh] rounded-t-md">
