@@ -1,5 +1,5 @@
 import { TodoType } from "./DataContext";
-import { useDataContext } from "./DataContext";
+import { useDataContext } from "../hooks";
 
 export default function Todo() {
   return <TodoList />;

@@ -1,4 +1,5 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useMemo, useState } from "react";
+import { useLocalStorage } from "../hooks";
 
 export type TodoType = {
   name: string;
@@ -30,7 +31,9 @@ export default function DataContextProvider({
     name: "",
     isDone: false,
   });
-  const [todosList, setTodosList] = useState<TodoType[]>([]);
+  const initialTodos: TodoType[] = [];
+  const [todosList, setTodosList] = useLocalStorage("todosList", initialTodos);
+
   const sortedTodosList = useMemo(
     () =>
       [...todosList].sort((a: TodoType, b: TodoType) => {
@@ -62,15 +65,4 @@ export default function DataContextProvider({
       {children}
     </DataContext.Provider>
   );
-}
-
-export function useDataContext() {
-  const context = useContext(DataContext);
-  if (!context) {
-    throw new Error(
-      "useThemeContext doit être utilisé à l'intérieur de DataContextProvider"
-    );
-  }
-
-  return context;
 }

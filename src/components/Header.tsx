@@ -1,4 +1,4 @@
-import { useDataContext } from "./DataContext";
+import { useDataContext } from "../hooks";
 
 export default function Header() {
   const { sortedTodosList, completedTodosList } = useDataContext();
